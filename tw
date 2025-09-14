@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Twinkle</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    overflow-y: auto;
+    text-align: center;
+  }
+
+  .active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 5vw;
+    color: #ff69b4;
+    text-shadow: 1px 1px 3px #ffb6c1;
+    margin-bottom: 15px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 3vw;
+    color: white;
+    background-color: #ff69b4;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #ff85c1;
+    transform: scale(1.05);
+  }
+
+  img {
+    max-width: 70%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .sections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .section {
+    background-color: #ffb6c1;
+    border-radius: 15px;
+    padding: 10px;
+    width: 45%;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s;
+    position: relative;
+  }
+
+  .section:hover {
+    transform: scale(1.02);
+  }
+
+  .section h2 {
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 3vw;
+  }
+
+  .section .content {
+    display: none;
+    margin-top: 10px;
+    text-align: left;
+    color: #fff;
+    font-size: 2vw;
+  }
+
+  .section.active .content {
+    display: block;
+  }
+
+  .section img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 6vw;
+    }
+    button {
+      font-size: 4vw;
+      padding: 6px 12px;
+    }
+    img {
+      max-width: 90%;
+      margin-bottom: 15px;
+    }
+    .section {
+      width: 90%;
+      padding: 10px;
+    }
+    .section h2 {
+      font-size: 4vw;
+    }
+    .section .content {
+      font-size: 3.5vw;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- First Page -->
+<div id="firstPage" class="page active">
+  <h1>Happy Birthday Twinkle 🎉</h1>
+  <button onclick="showPage(2)">Click Here</button>
+</div>
+
+<!-- Second Page -->
+<div id="secondPage" class="page">
+  <img src="pic/pic.11.jpg" alt="Second Page Image">
+  <h1>Heyy Cutieee!</h1>
+  <button onclick="showPage(3)">Click Here</button>
+</div>
+
+<!-- Third Page -->
+<div id="thirdPage" class="page">
+  <img src="pic/pic.12.jpg" alt="Third Page Image">
+  <h1>Almost there!</h1>
+  <button onclick="showPage(4)">Click Here</button>
+</div>
+
+<!-- Fourth Page -->
+<div id="fourthPage" class="page">
+  <img src="pic/pic.13.jpg" alt="Fourth Page Image">
+  <h1>Just one more step!</h1>
+  <button onclick="showPage(5)">Click Here</button>
+</div>
+
+<!-- Final Page -->
+<div id="fifthPage" class="page">
+  <h1>Special Wishes for You 🎈</h1>
+  <div class="sections">
+    <div class="section" onclick="toggleSection(this)">
+      <h2>Aman</h2>
+      <div class="content">
+        <img src="https://via.placeholder.com/300x200?text=Aman" alt="Aman Image">
+        <p>Happy Birthday Twinkle!🌟 You’re not just my friend, you’re family...</p>
+      </div>
+    </div>
+    <div class="section" onclick="toggleSection(this)">
+      <h2>Tejaswita</h2>
+      <div class="content">
+        <img src="https://via.placeholder.com/300x200?text=Tejaswita" alt="Tejaswita Image">
+        <p>Happy Birthday, Twinks! 🎉💖 You’re not just my friend, you’re my safe space...</p>
+      </div>
+    </div>
+    <div class="section" onclick="toggleSection(this)">
+      <h2>Aqsa</h2>
+      <div class="content">
+        <img src="https://via.placeholder.com/300x200?text=Aqsa" alt="Aqsa Image">
+        <p>Hey Twinkle aka Twinkiee 💖 It’s crazy to think that we’ve known each other for a year now...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPage(pageNumber) {
+  const pages = ["firstPage", "secondPage", "thirdPage", "fourthPage", "fifthPage"];
+  pages.forEach(id => document.getElementById(id).classList.remove('active'));
+  document.getElementById(pages[pageNumber - 1]).classList.add('active');
+}
+
+function toggleSection(element) {
+  element.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
